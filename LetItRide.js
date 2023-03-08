@@ -105,11 +105,11 @@ const startRound = () => {
 const askNextMove = () => {
   // ask the user what they want to do
   if (betNumber == 1) {
-    // letItRide();
-    pullBet();
+    letItRide();
+    // pullBet();
   } else if (betNumber == 2) {
-    pullBet();
-    // letItRide();
+    // pullBet();
+    letItRide();
   }
 };
 
@@ -138,7 +138,13 @@ const nextRound = () => {
   }
 };
 
+const evaluateHand = () => {
+  // evaluate the hand and return the winnings multiplier
+  return 3;
+};
+
 const endRound = () => {
+  totalBet *= evaluateHand();
   console.log("Total Bet: " + totalBet);
 };
 
