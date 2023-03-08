@@ -3,7 +3,6 @@
 // constants for creating the deck
 const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 const values = [
-  "A",
   "2",
   "3",
   "4",
@@ -16,6 +15,7 @@ const values = [
   "J",
   "Q",
   "K",
+  "A",
 ];
 
 // create a card object
@@ -92,14 +92,75 @@ const printHand = (hand) => {
   }
 };
 
-// create a deck
-let deck = shuffle(cards());
-const hand = [];
+const startRound = () => {
+  console.log("Let It Ride Poker Game");
+  deck = shuffle(cards());
+  hand = [];
+  deal3Hand();
+  console.log("------ 3 Card Hand ------");
+  printHand(hand);
+  askNextMove();
+};
 
-console.log("Let It Ride Poker Game");
-console.log("------ 3 Card Hand ------");
-printHand(deal3Hand());
-console.log("------ 4th Card ------");
-printHand([deal4thCard()]);
-console.log("------ 5th Card ------");
-printHand([deal5thCard()]);
+const askNextMove = () => {
+  // ask the user what they want to do
+  if (betNumber == 1) {
+    // letItRide();
+    pullBet();
+  } else if (betNumber == 2) {
+    pullBet();
+    // letItRide();
+  }
+};
+
+const pullBet = () => {
+  console.log("Pulling Bet");
+  totalBet -= betAmount;
+  nextRound();
+};
+
+const letItRide = () => {
+  console.log("Letting It Ride");
+  nextRound();
+};
+
+const nextRound = () => {
+  if (betNumber == 1) {
+    betNumber = 2;
+    console.log("------ 4th Card ------");
+    printHand([deal4thCard()]);
+    askNextMove();
+  } else if (betNumber == 2) {
+    betNumber = 3;
+    console.log("------ 5th Card ------");
+    printHand([deal5thCard()]);
+    endRound();
+  }
+};
+
+const endRound = () => {
+  console.log("Total Bet: " + totalBet);
+};
+
+// default variables
+let yourMoney = 1000;
+let handsPlayed = 0;
+let handsWon = 0;
+
+// round specific variables
+let deck;
+let hand = [];
+let betAmount = 5; // min bet is 5
+let totalBet = betAmount * 3; // total bet for the round is 3 * betAmount
+let betNumber = 1;
+
+startRound();
+
+// letItRide();
+// console.log("------ 4th Card ------");
+// printHand([deal4thCard()]);
+// letItRide();
+
+// pullBet();
+// console.log("------ 5th Card ------");
+// printHand([deal5thCard()]);
