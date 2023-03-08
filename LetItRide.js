@@ -210,11 +210,11 @@ const evaluateHand = () => {
     map = {};
     for (let i = 0; i < hand.length; i++) {
       // if the card is in the map then it is a pair
-      if (map[hand[i].shortValue]) {
-        pairCard = hand[i].shortValue;
+      if (map[hand[i].value] == 1) {
+        pairCard = hand[i].value;
         break;
       } else {
-        map[hand[i].shortValue] = true;
+        map[hand[i].value] = 1;
       }
     }
     // check if the pair is high
@@ -245,7 +245,19 @@ const evaluateHand = () => {
 
 const endRound = () => {
   totalBet *= evaluateHand();
-  console.log("Total Bet: " + totalBet);
+  console.log("Bet turnout: " + totalBet);
+  yourMoney += totalBet;
+  console.log("Your Money: " + yourMoney);
+  resetRound();
+};
+
+const resetRound = () => {
+  // reset round specific variables
+  deck = [];
+  hand = [];
+  betAmount = 5; // min bet is 5
+  totalBet = betAmount * 3; // total bet for the round is 3 * betAmount
+  betNumber = 1;
 };
 
 // default variables
@@ -260,7 +272,10 @@ let betAmount = 5; // min bet is 5
 let totalBet = betAmount * 3; // total bet for the round is 3 * betAmount
 let betNumber = 1;
 
-startRound();
+for (let i = 0; i < 10; i++) {
+  console.log("Round: " + i + "\n");
+  startRound();
+}
 
 // letItRide();
 // console.log("------ 4th Card ------");
