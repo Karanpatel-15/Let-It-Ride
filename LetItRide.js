@@ -1,5 +1,9 @@
 // Let It Ride Poker Game
 
+// use poker-hands library to evaluate the hand
+// https://www.npmjs.com/package/poker-hands
+const pokerHands = require("poker-hands");
+
 // constants for creating the deck
 const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 const values = [
@@ -11,7 +15,7 @@ const values = [
   "7",
   "8",
   "9",
-  "10",
+  "T", // 10
   "J",
   "Q",
   "K",
@@ -20,9 +24,22 @@ const values = [
 
 // create a card object
 const card = (suit, value) => {
+  // create a short value for the card (2-10, J, Q, K, A) with suit (H, D, S, C)
+  let shortValue = value;
+  if (suit == "Hearts") {
+    shortValue += "H";
+  } else if (suit == "Diamonds") {
+    shortValue += "D";
+  } else if (suit == "Spades") {
+    shortValue += "S";
+  } else if (suit == "Clubs") {
+    shortValue += "C";
+  }
+
   const card = {
     suit: suit,
     value: value,
+    shortValue: shortValue,
   };
   return card;
 };
@@ -139,8 +156,91 @@ const nextRound = () => {
 };
 
 const evaluateHand = () => {
-  // evaluate the hand and return the winnings multiplier
-  return 3;
+  // make poker hand lib systax for the hand "2H 3H 4H 5H 6H"
+  let pokerHand = "";
+  for (let i = 0; i < hand.length; i++) {
+    pokerHand += hand[i].shortValue + " ";
+  }
+  pokerHand = pokerHand.trim();
+  let strength = pokerHands.getHandStrength(pokerHand);
+
+  /* 
+  RoyalFlush, strength = 0, payoff = 1000
+  StraightFlush, strength = 1, payoff = 200
+  FourOfAKind, strength = 2, payoff = 50
+  FullHouse, strength = 3, payoff = 11
+  Flush, strength = 4, payoff = 8
+  Straight, strength = 5, payoff = 5
+  ThreeOfAKind, strength = 6, payoff = 3
+  TwoPairs, strength = 7, payoff = 2
+  Pair, strength = 8, payoff = 1 (note this is not high pair need to add that)
+  highestCard, strength = 9, payoff = -1
+  */
+
+  let payOff = 0;
+
+  if (strength == 0) {
+    console.log("Royal Flush");
+    payOff = 1000;
+  } else if (strength == 1) {
+    console.log("Straight Flush");
+    payOff = 200;
+  } else if (strength == 2) {
+    console.log("Four of a Kind");
+    payOff = 50;
+  } else if (strength == 3) {
+    console.log("Full House");
+    payOff = 11;
+  } else if (strength == 4) {
+    console.log("Flush");
+    payOff = 8;
+  } else if (strength == 5) {
+    console.log("Straight");
+    payOff = 5;
+  } else if (strength == 6) {
+    console.log("Three of a Kind");
+    payOff = 3;
+  } else if (strength == 7) {
+    console.log("Two Pairs");
+    payOff = 2;
+  } else if (strength == 8) {
+    // make sure its a high pair (T, J, Q, K, A) and not a low pair (2, 3, 4, 5, 6)
+    // find which card is the pair
+    let pairCard = "";
+    map = {};
+    for (let i = 0; i < hand.length; i++) {
+      // if the card is in the map then it is a pair
+      if (map[hand[i].shortValue]) {
+        pairCard = hand[i].shortValue;
+        break;
+      } else {
+        map[hand[i].shortValue] = true;
+      }
+    }
+    // check if the pair is high
+    if (
+      pairCard == "T" ||
+      pairCard == "J" ||
+      pairCard == "Q" ||
+      pairCard == "K" ||
+      pairCard == "A"
+    ) {
+      console.log("High Pair");
+      payOff = 1;
+    } else {
+      console.log("Low Pair");
+      payOff = -1;
+    }
+    // console.log("Pair");
+    // payOff = 1;
+  } else if (strength == 9) {
+    console.log("Highest Card");
+    payOff = -1;
+  }
+
+  console.log("Hand Strength: " + strength);
+  console.log("Payoff: " + payOff);
+  return payOff;
 };
 
 const endRound = () => {
