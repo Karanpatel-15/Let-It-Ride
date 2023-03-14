@@ -39,7 +39,7 @@ const card = (suit, value) => {
   const card = {
     suit: suit,
     value: value,
-    shortValue: shortValue,
+    shortValue: shortValue, // 2H format
   };
   return card;
 };
