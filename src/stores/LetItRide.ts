@@ -6,7 +6,7 @@
 // https://www.npmjs.com/package/poker-hands
 // import * as pokerHands from "poker-hands"; // import the poker-hands library
 
-import { pokerHands } from "poker-hands";
+import pokerHands from "./Pokerhands";
 
 // constants for creating the deck
 const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
