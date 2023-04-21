@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import { useRoundStore } from "../../../stores/RoundStore";
 
 export const YourMoney = () => {
+  const { playerTotalMoney } = useRoundStore();
   return (
     <DivStyled>
       <TitleStyled>Your Money</TitleStyled>
-      <AmountStyled>$0.00</AmountStyled>
+      <AmountStyled>${playerTotalMoney}</AmountStyled>
     </DivStyled>
   );
 };
@@ -18,6 +20,6 @@ const DivStyled = styled.div`
 const TitleStyled = styled.h3``;
 
 const AmountStyled = styled.h3`
-font-size: 45px;
-color: #818080;
+  font-size: 45px;
+  color: #074F57;
 `;

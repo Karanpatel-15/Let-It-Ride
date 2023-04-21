@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-export const CommunityCardTitle = () => {
+export const YourCardTitle = () => {
   return (
     <TitleStyled>
-      <div></div>
-      <p> Community Cards</p>
+      <p> Your Cards</p>
       <div></div>
     </TitleStyled>
   );
@@ -12,11 +11,10 @@ export const CommunityCardTitle = () => {
 
 const TitleStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr 250px 1fr;
+  grid-template-columns: 250px 1fr;
   align-items: center;
   column-gap: 8px;
   width: 100%;
-  margin-bottom: 80px;
 
   > div {
     height: 4px;

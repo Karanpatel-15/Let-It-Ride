@@ -5,7 +5,13 @@
 }
 
 body {
-    background: #b3ddc9;
+    background: #077187;
 
+}
+
+#root{ 
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 

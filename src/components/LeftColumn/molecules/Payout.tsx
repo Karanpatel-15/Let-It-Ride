@@ -62,7 +62,7 @@ const DivStyled = styled.div`
   padding: 16px;
   border-radius: 16px;
   row-gap: 8px;
-  background: #818080;
+  background: #074F57;
   color: white;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ const PayoutStyled = styled.div`
     display: flex;
     justify-content: space-between;
     .title{
-        color: #f8e678;
+        color: #ffffff;
     }
 `
 
