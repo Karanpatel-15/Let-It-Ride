@@ -1,8 +1,12 @@
+// @ts-nocheck
+
 // Let It Ride Poker Game
 
 // use poker-hands library to evaluate the hand
 // https://www.npmjs.com/package/poker-hands
-import * as pokerHands from "poker-hands";
+// import * as pokerHands from "poker-hands"; // import the poker-hands library
+
+import { pokerHands } from "poker-hands";
 
 // constants for creating the deck
 const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];

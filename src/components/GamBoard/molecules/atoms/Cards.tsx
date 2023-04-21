@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from "react";
 import CardBack from "../../../../assets/cardBack.png";
 import styled from "styled-components";

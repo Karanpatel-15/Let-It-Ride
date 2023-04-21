@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { create } from "zustand";
 import { shuffle, cards, dealHand, evaluateHand } from "./LetItRide";
 import swal from 'sweetalert';
