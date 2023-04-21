@@ -8,8 +8,8 @@ dependencies:
     specifier: ^8.3.1
     version: 8.3.1
   poker-hands:
-    specifier: ^1.0.2
-    version: 1.0.2
+    specifier: ^0.0.1
+    version: 0.0.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -771,10 +771,6 @@ packages:
     hasBin: true
     dev: true
 
-  /lodash@3.10.1:
-    resolution: {integrity: sha512-9mDDwqVIma6OZX79ZlDACZl8sBm0TEnkf99zV3iMA4GzkIT/9hiqP5mY0HoT1iNLCrKc/R1HByV+yJfRWVJryQ==}
-    dev: false
-
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: false
@@ -831,10 +827,8 @@ packages:
     hasBin: true
     dev: false
 
-  /poker-hands@1.0.2:
-    resolution: {integrity: sha512-ucAjjjObhpz54FlvZjrKWMyxWyDhxlho7OcLMM0vddo8vo7uc1Ptc2LCIfv+m/DLNFGuVe/lcAS3BbQZlAW75w==}
-    dependencies:
-      lodash: 3.10.1
+  /poker-hands@0.0.1:
+    resolution: {integrity: sha512-IMvkGcG4ZCKM6Xi2+AJfVXGqazrigXwFIdjhebXoiqzP1tIaAvEhRxC85wDv1X/sZGUKnlx2k5GYwhpLlrGMUA==}
     dev: false
 
   /postcss-value-parser@4.2.0:
