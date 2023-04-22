@@ -99,7 +99,7 @@ export const useRoundStore = create<IRoundStore>((set, get) => ({
     setTimeout(() => {
       const evaluation = evaluateHand(get().playerHand);
       const totalChange =
-        evaluation.payOff == -1 ? 0 : evaluation.payOff * get().totalBet;
+        evaluation.payOff == -1 ? 0 : evaluation.payOff * get().bet;
       set({
         isRoundInProgress: false,
         round: 0,

@@ -230,9 +230,11 @@ export const evaluateHand = (hand) => {
     };
   } else if (strength == 7) {
     return {
-      typeOfHand: "Two Pair",
-      payOff: 2,
+      typeOfHand: "Low Pair",
+      payOff: -1,
     };
+    console.log("Two Pairs");
+    payOff = 2;
   } else if (strength == 8) {
     // make sure its a high pair (T, J, Q, K, A) and not a low pair (2, 3, 4, 5, 6)
     // find which card is the pair
